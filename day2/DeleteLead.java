@@ -46,7 +46,7 @@ public class DeleteLead {
 	
 		//	Enter phone number
 		driver.findElement(By.linkText("Phone")).click();		
-		driver.findElement(By.xpath("//input[@name='phoneNumber']")).sendKeys("99");
+		driver.findElement(By.xpath("//input[@name='phoneNumber']")).sendKeys("9876543210");
 		Thread.sleep(1000);		
 		
 		//click find leads button
@@ -78,9 +78,14 @@ public class DeleteLead {
 		
 		//Verify message "No records to display" in the Lead List. This message confirms the successful deletion
 		Thread.sleep(5000);
+		String msg = driver.findElement(By.xpath("//div[@class = 'x-paging-info']")).getText();
+		if (msg.equals("No records to display"))
+			System.out.println("No records to display" + "\nLead ID : "+text +" is deleted sucessfully");
+		else
+			System.out.println("Lead ID : "+text +" is not deleted");
 		
 		//	Close the browser (Do not log out)
-		driver.close();
+		// driver.close();
 		
 		
 		
