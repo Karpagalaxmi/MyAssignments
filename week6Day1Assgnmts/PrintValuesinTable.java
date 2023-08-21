@@ -26,16 +26,14 @@ public class PrintValuesinTable {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			
 		//First Table : 'The Three Most Popular JavaScript Libraries'
-		List<WebElement> trows = driver.findElements(By.xpath("//div[@class='render']/table/*")); // rtn caption,thead,tbody,tfoot
-		int trowSize = trows.size();
-		trowSize = trowSize-2; // exclude caption and tbody
-		List<WebElement> count_rows_in_tbody = driver.findElements(By.xpath("//div[@class='render']/table/tbody/tr")); // get no. of rows in tbody
-		trowSize= trowSize + count_rows_in_tbody.size();
+		// get no. of rows in tbody
+		List<WebElement> count_rows_in_tbody = driver.findElements(By.xpath("//div[@class='render']/table/tbody/tr")); 
+		int trowSize= count_rows_in_tbody.size();
 		
-		List<WebElement> tcols = driver.findElements(By.xpath("//div[@class='render']/table/thead/tr[1]/th"));
+		List<WebElement> tcols = driver.findElements(By.xpath("//div[@class='render']/table/tbody/tr[1]/td"));
 		int tcolSize = tcols.size();
 				
-		for(int i=1;i<= count_rows_in_tbody.size();i++)
+		for(int i=1;i<= trowSize;i++)
 		{
 			int flag=0;
 			for(int j=1;j<= tcolSize;j++)
