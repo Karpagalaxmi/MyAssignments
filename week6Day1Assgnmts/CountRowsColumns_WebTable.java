@@ -24,8 +24,15 @@ public class CountRowsColumns_WebTable {
 		//First Table : 'The Three Most Popular JavaScript Libraries'
 		System.out.println("Table Name:\n==========");
 		System.out.println(driver.findElement(By.xpath("//caption")).getText());
+
+		List<WebElement> count_rows_in_tbody = driver.findElements(By.xpath("//div[@class='render']/table/tbody/tr")); 
+		int trowSize= count_rows_in_tbody.size();
+		System.out.println("\nNo. of Rows: "+ trowSize);
+		List<WebElement> tcols = driver.findElements(By.xpath("//div[@class='render']/table/tbody/tr[1]/td"));
+		int tcolSize = tcols.size();
+		System.out.println("No. of Columns: "+ tcolSize);
 		
-		List<WebElement> trows = driver.findElements(By.xpath("//div[@class='render']/table/*")); // rtn caption,thead,tbody,tfoot
+		/*List<WebElement> trows = driver.findElements(By.xpath("//div[@class='render']/table/*")); // rtn caption,thead,tbody,tfoot
 		int trowSize = trows.size();
 		trowSize = trowSize-2; // exclude caption and tbody
 		List<WebElement> count_rows_in_tbody = driver.findElements(By.xpath("//div[@class='render']/table/tbody/tr")); // get no. of rows in tbody
@@ -35,6 +42,7 @@ public class CountRowsColumns_WebTable {
 		List<WebElement> tcols = driver.findElements(By.xpath("//div[@class='render']/table/thead/tr[1]/th"));
 		int tcolSize = tcols.size();
 		System.out.println("No. of Columns: "+ tcolSize);
+		*/
 		
 		
 		//Second Table :'Attributes of Create An HTML Table Quickly & Easily With Our Code Example'
